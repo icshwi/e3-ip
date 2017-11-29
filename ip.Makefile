@@ -51,12 +51,18 @@ SOURCES += $(APPSRC)/devMPC.c
 SOURCES += $(APPSRC)/devGP307gpib.c  
 SOURCES += $(APPSRC)/devXxHeidenhainGpib.c
 SOURCES += $(APPSRC)/devXxAX301.c    
-SOURCES += $(APPSRC)/devXxKeithleyDMM199Gpib.c 
+SOURCES += $(APPSRC)/devXxKeithleyDMM199Gpib.c
+# SOURCES_vxWorks += $(APPSRC)/tyGSAsynInit.c
 SOURCES += $(APPSRC)/devTelevac.c
 SOURCES += $(APPSRC)/devTPG261.c
 
 DBDS    += $(APPSRC)/ipSupport.dbd
-DBDS    += $(APPSRC)/ipVXSupport.dbd
+# libip.so: undefined symbol: tyGSAsynInitBuffsize
+# we excluded tyGSAsynInit.c because it will be needed
+# for vxWorks, so I also exclude ipVXSupport, because
+# driver.makefile combine all dbds to make one ip.dbd
+
+# DBDS    += $(APPSRC)/ipVXSupport.dbd
 
 
 
