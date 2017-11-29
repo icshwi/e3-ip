@@ -1,63 +1,67 @@
+#
+#  Copyright (c) 2017 - Present  European Spallation Source ERIC
+#
+#  The program is free software: you can redistribute
+#  it and/or modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation, either version 2 of the
+#  License, or any newer version.
+#
+#  This program is distributed in the hope that it will be useful, but WITHOUT
+#  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+#  more details.
+#
+#  You should have received a copy of the GNU General Public License along with
+#  this program. If not, see https://www.gnu.org/licenses/gpl-2.0.txt
+#
+# Author  : Jeong Han Lee
+# email   : han.lee@esss.se
+# Date    : Wednesday, November 29 13:46:39 CET 2017
+# version : 0.0.1
 
 
-#where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 include $(REQUIRE_TOOLS)/driver.makefile
 
-#APP:=modbusApp
-#APPDB:=$(APP)/Db
-#APPSRC:=$(APP)/src
+APP:=ipApp
+APPDB:=$(APP)/Db
+APPSRC:=$(APP)/src
 
-#USR_INCLUDES += -I$(where_am_I)/$(APPSRC)
-
-#TEMPLATES += $(wildcard $(APPDB)/*.template)
+USR_INCLUDES += -I$(where_am_I)/$(APPSRC)
 
 
-#SOURCES   += $(APPSRC)/modbusInterpose.c
-#SOURCES   += $(APPSRC)/drvModbusAsyn.c
-#DBDS      += $(APPSRC)/modbusSupport.dbd
-#HEADERS   += $(APPSRC)/drvModbusAsyn.h
+USR_CFLAGS   += -Wno-unused-variable
+USR_CFLAGS   += -Wno-unused-function
+USR_CFLAGS   += -Wno-unused-but-set-variable
+USR_CPPFLAGS += -Wno-unused-variable
+USR_CPPFLAGS += -Wno-unused-function
+USR_CPPFLAGS += -Wno-unused-but-set-variable
 
 
-# 
-#USR_CFLAGS   += -Wno-unused-variable
-#USR_CFLAGS   += -Wno-unused-function
-#USR_CPPFLAGS += -Wno-unused-variable
-#USR_CPPFLAGS += -Wno-unused-function
+SOURCES += $(APPSRC)/devXxStrParm.c
+SOURCES += $(APPSRC)/devXxEurotherm.c
+SOURCES += $(APPSRC)/devAiHeidND261.c
+SOURCES += $(APPSRC)/devAiMKS.c
+SOURCES += $(APPSRC)/Keithley2kDMM.st
+SOURCES += $(APPSRC)/Keithley65xxEM.st
+SOURCES += $(APPSRC)/Keithley2kDMM_mf40.st
+SOURCES += $(APPSRC)/Federal.st
+SOURCES += $(APPSRC)/devMPC.c
+SOURCES += $(APPSRC)/devGP307gpib.c  
+SOURCES += $(APPSRC)/devXxHeidenhainGpib.c
+SOURCES += $(APPSRC)/devXxAX301.c    
+SOURCES += $(APPSRC)/devXxKeithleyDMM199Gpib.c 
+SOURCES += $(APPSRC)/devTelevac.c
+SOURCES += $(APPSRC)/devTPG261.c
 
-#
-#
-# The following lines must be updated according to your ip
-#
-# Examples...
-# 
-# USR_CFLAGS += -fPIC
-# USR_CFLAGS   += -DDEBUG_PRINT
-# USR_CPPFLAGS += -DDEBUG_PRINT
-# USR_CPPFLAGS += -DUSE_TYPED_RSET
-# USR_INCLUDES += -I/usr/include/libusb-1.0
-# USR_LDFLAGS += -lusb-1.0
+DBDS    += $(APPSRC)/ipSupport.dbd
+DBDS    += $(APPSRC)/ipVXSupport.dbd
 
-# USR_LDFLAGS += -L /opt/etherlab/lib
-# USR_LDFLAGS += -lethercat
-# USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
-#
-#
-# PCIAPP:= pciApp
-#
-# HEADERS += $(PCIAPP)/devLibPCI.h
-# HEADERS += $(PCIAPP)/devLibPCIImpl.h
 
-# SOURCES += $(wildcard $(PCIAPP)/devLib*.c)
-# SOURCES += $(PCIAPP)/pcish.c
-# SOURCES_Linux += $(PCIAPP)/os/Linux/devLibPCIOSD.c
 
-# DBDS += $(PCIAPP)/epicspci.dbd
+TEMPLATES += $(wildcard $(APPDB)/*.db)
+# ip has *.proto and *.protocol files in $(APPDB)
+TEMPLATES += $(wildcard $(APPDB)/*.proto*)
 
-# MRMSHARED:= mrmShared
-# MRMSHAREDSRC:=$(MRMSHARED)/src
-# MRMSHAREDDB:=$(MRMSHARED)/Db
-# TEMPLATES += $(wildcard $(MRMSHAREDDB)/*.db)
-# TEMPLATES += $(wildcard $(MRMSHAREDDB)/*.template)
-# TEMPLATES += $(wildcard $(MRMSHAREDDB)/*.substitutions)
 
