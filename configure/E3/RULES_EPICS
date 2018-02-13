@@ -7,7 +7,8 @@ epics:
 	$(QUIET)echo "ASYN=$(M_ASYN)"                  > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
 	$(QUIET)echo "SNCSEQ=$(M_SNCSEQ)"             >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
 	$(QUIET)echo "EPICS_BASE=$(EPICS_BASE)"       >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-	$(QUIET)echo "INSTALL_LOCATION=$(M_IP)"        > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "CHECK_RELEASE = YES"              > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "INSTALL_LOCATION=$(M_IP)"        >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
 	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH)"
 
 epics-clean:
