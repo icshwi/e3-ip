@@ -22,13 +22,13 @@
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-include $(REQUIRE_TOOLS)/driver.makefile
+include $(E3_REQUIRE_TOOLS)/driver.makefile
 
 APP:=ipApp
 APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
-USR_INCLUDES += -I$(where_am_I)/$(APPSRC)
+USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
 
 USR_CFLAGS   += -Wno-unused-variable
@@ -71,3 +71,7 @@ TEMPLATES += $(wildcard $(APPDB)/*.db)
 TEMPLATES += $(wildcard $(APPDB)/*.proto*)
 
 
+
+# db rule is the default in RULES_E3, so add the empty one
+
+db:

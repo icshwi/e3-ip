@@ -1,0 +1,10 @@
+.PHONY: patch patchrevert
+
+
+## Apply EPICS Patch Files 
+patch:
+	$(QUIET) $(call patch_site)
+
+## Revert EPICS Patch Files 
+patchrevert:
+	$(QUIET) $(call patch_revert_site)
