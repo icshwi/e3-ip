@@ -4,5 +4,5 @@
 \#*
 *-dev
 .cvsignore
-*_old
+*_old/
 .\#*
