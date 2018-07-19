@@ -16,13 +16,17 @@
 #
 # Author  : Jeong Han Lee
 # email   : han.lee@esss.se
-# Date    : Wednesday, November 29 13:46:39 CET 2017
-# version : 0.0.1
+# Date    : Thursday, July 19 23:55:08 CEST 2018
+# version : 0.0.2
 
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 include $(E3_REQUIRE_TOOLS)/driver.makefile
+
+ifneq ($(strip $(ASYN_DEP_VERSION)),)
+asyn_VERSION=$(ASYN_DEP_VERSION)
+endif
 
 APP:=ipApp
 APPDB:=$(APP)/Db
