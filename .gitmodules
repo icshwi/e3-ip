@@ -1,4 +1,4 @@
 [submodule "ip"]
 	path = ip
 	url = https://github.com/epics-modules/ip
-	ignore = all
+	ignore = dirty
