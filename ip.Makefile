@@ -1,4 +1,5 @@
 #
+#  Copyright (c) 2019            Jeong Han Lee
 #  Copyright (c) 2017 - Present  European Spallation Source ERIC
 #
 #  The program is free software: you can redistribute
@@ -16,11 +17,8 @@
 #
 # Author  : Jeong Han Lee
 # email   : han.lee@esss.se
-# Date    : Tuesday, September 18 11:57:31 CEST 2018
-# version : 0.0.4
-
-# LEGACY_RSET should be defined before driver.makefile
-# require-ess from 3.0.1
+# Date    : Tuesday, September 17 21:52:54 CEST 2019
+# version : 0.0.5
 LEGACY_RSET = YES
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -90,6 +88,9 @@ TEMPLATES += $(wildcard $(APPDB)/*.proto*)
 
 db:
 #
-.PHONY: vlibs
+.PHONY: db
+
 vlibs:
+
+.PHONY: vlibs
 #
